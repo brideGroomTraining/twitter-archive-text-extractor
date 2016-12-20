@@ -34,7 +34,7 @@ public class JsonTextExtractor {
                 final String psudoJsonStr = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
                 final String realJson     = org.apache.commons.lang.StringUtils.substringAfter(psudoJsonStr, "\n");
                 final JSONArray twtArray  = new JSONArray(realJson);
-                final Iterator iterator = twtArray.iterator();
+                final Iterator iterator   = twtArray.iterator();
                 while (iterator.hasNext()) {
                     final JSONObject tweet = (JSONObject)iterator.next();
                     System.out.println(extractTextFromTweet(tweet));
@@ -46,7 +46,7 @@ public class JsonTextExtractor {
     }
     
     private List<File> listArchiveFilesOrderByDate() {
-        List<File> files = (List<File>) FileUtils.listFiles(new File("/data/js/tweets"), new String[]{"js"}, true);
+        List<File> files = (List<File>) FileUtils.listFiles(new File("data/js/tweets"), new String[]{"js"}, true);
         Collections.sort(files, new Comparator<File>(){
             @Override
             public int compare(File o1, File o2) {
